@@ -11,24 +11,27 @@ class SeedDump
         num_of_batches, batch_size, last_batch_size = batch_params_from(records, options)
 
         # Loop through each batch
-        (1..num_of_batches).each do |batch_number|
+        TransactionAccessor.acceptable_non_sharded_read do
 
-          record_strings = []
+          (1..num_of_batches).each do |batch_number|
 
-          last_batch = (batch_number == num_of_batches)
+            record_strings = []
 
-          cur_batch_size = if last_batch
-                             last_batch_size
-                           else
-                             batch_size
-                           end
+            last_batch = (batch_number == num_of_batches)
 
-          # Loop through the records of the current batch
-          records.offset((batch_number - 1) * batch_size).limit(cur_batch_size).each do |record|
-            record_strings << dump_record(record, options)
+            cur_batch_size = if last_batch
+                               last_batch_size
+                             else
+                               batch_size
+                             end
+
+            # Loop through the records of the current batch
+            records.offset((batch_number - 1) * batch_size).limit(cur_batch_size).each do |record|
+              record_strings << dump_record(record, options)
+            end
+
+            yield record_strings, last_batch
           end
-
-          yield record_strings, last_batch
         end
       end
 
