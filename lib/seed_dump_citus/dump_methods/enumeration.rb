@@ -1,4 +1,4 @@
-class SeedDump
+class SeedDumpCitus
   module DumpMethods
     module Enumeration
       def active_record_enumeration(records, io, options)

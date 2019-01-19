@@ -3,7 +3,7 @@ require 'seed_dump/dump_methods/enumeration'
 require 'seed_dump/dump_methods'
 require 'seed_dump/environment'
 
-class SeedDump
+class SeedDumpCitus
   extend Environment
   extend DumpMethods
 

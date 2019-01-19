@@ -1,4 +1,4 @@
-class SeedDump
+class SeedDumpCitus
   class Railtie < Rails::Railtie
 
     rake_tasks do

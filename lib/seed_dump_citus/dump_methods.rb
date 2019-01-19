@@ -1,4 +1,4 @@
-class SeedDump
+class SeedDumpCitus
   module DumpMethods
     include Enumeration
 

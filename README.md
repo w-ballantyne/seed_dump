@@ -14,7 +14,7 @@ Installation
 
 Add it to your Gemfile with:
 ```ruby
-gem 'seed_dump'
+gem 'seed_dump_citus'
 ```
 Or install it by hand:
 ```sh
