@@ -1,4 +1,4 @@
-require 'seed_dump'
+require 'seed_dump_citus'
 
 require 'active_support'
 require 'active_record'
